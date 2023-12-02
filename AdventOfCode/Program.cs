@@ -6,27 +6,20 @@ namespace AdventOfCode
     {
         static void Main(string[] args)
         {
-            // Day 1
             string[] lines = File.ReadAllLines("PuzzleInput.txt");
-
-            int sum = 0;
-
-            foreach(string line in lines)
+            List<Line> PuzzleInput = new List<Line>();
+            foreach(string input in lines)
             {
-                // find first digit
-                string firstDigit = Regex.Match(line, @"^.*?(\d)").Groups[1].Value;
-
-                // find last digit
-                string lastDigit = Regex.Match(line, @".*(\d)").Groups[1].Value;
-
-                Console.WriteLine($"Trying to calculate the calibration value for {line}: {firstDigit} {lastDigit}");
-
-                // concatenate and convert to integer
-                sum += int.Parse(firstDigit + lastDigit);
+                PuzzleInput.Add(new Line(input));
             }
 
-            // display the sum
-            Console.WriteLine($"Sum: {sum}");
+            foreach(Line line in PuzzleInput)
+            {
+
+            }
+
+            // display the result
+            Console.WriteLine($"");
 
 
             
