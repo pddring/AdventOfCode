@@ -13,13 +13,21 @@ namespace AdventOfCode
                 PuzzleInput.Add(new Line(input));
             }
 
+            int sum = 0;
             foreach(Line line in PuzzleInput)
             {
-
+                if(line.IsPossible(12, 13, 14))
+                {
+                    Console.WriteLine($"{line.input} is playable");
+                    sum += line.GameID;
+                } else
+                {
+                    Console.WriteLine($"{line.input} is not playable");
+                }
             }
 
             // display the result
-            Console.WriteLine($"");
+            Console.WriteLine($"Sum: {sum}");
 
 
             
