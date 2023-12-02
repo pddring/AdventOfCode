@@ -16,23 +16,14 @@ namespace AdventOfCode
             int sum = 0;
             foreach(Line line in PuzzleInput)
             {
-                if(line.IsPossible(12, 13, 14))
-                {
-                    Console.WriteLine($"{line.input} is playable");
-                    sum += line.GameID;
-                } else
-                {
-                    Console.WriteLine($"{line.input} is not playable");
-                }
+                Set s = line.GetMinimumRequired();
+                int power = s.GetPower();
+                sum += power;
+                Console.WriteLine($"{line.input}: min required: {s} Power: {power}");
             }
 
             // display the result
             Console.WriteLine($"Sum: {sum}");
-
-
-            
-
-
         }
     }
 }

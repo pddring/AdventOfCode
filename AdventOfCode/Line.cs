@@ -25,6 +25,25 @@ namespace AdventOfCode
                 colours[colour] = quantity;
             }
         }
+
+        public int GetPower()
+        {
+            int power = 1;
+            foreach(string c in colours.Keys)
+            {
+                power *= colours[c];
+            }
+            return power;
+        }
+
+        public override string ToString()
+        {
+            string s = "";
+            foreach(string c in colours.Keys) {
+                s += $"{colours[c]} {c},";
+            }
+            return s;
+        }
     }
 
     internal class Line
@@ -44,6 +63,22 @@ namespace AdventOfCode
             {
                 sets.Add(new Set(part));
             }
+        }
+
+        public Set GetMinimumRequired()
+        {
+            Set min = new Set("");
+            foreach(Set s in sets)
+            {
+                foreach(string c in min.colours.Keys)
+                {
+                    if (s.colours[c] > min.colours[c])
+                    {
+                        min.colours[c] = s.colours[c];
+                    }
+                }
+            }
+            return min;
         }
 
         public bool IsPossible(int red, int green, int blue)
