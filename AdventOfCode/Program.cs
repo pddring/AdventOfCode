@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Runtime.Intrinsics.Arm;
+using System.Text.RegularExpressions;
 
 namespace AdventOfCode
 {
@@ -10,9 +11,24 @@ namespace AdventOfCode
 
             int sum = 0;
 
-            foreach(Line line in lines)
+            foreach(EngineItem n in Line.numbers)
             {
-                
+                bool adjacent = false;
+                foreach(EngineItem s in Line.symbols)
+                {
+                    if(n.AdjacentTo(s))
+                    {
+                        adjacent = true;
+                        Console.WriteLine($"{n} is adjacant to {s}");
+                        sum += n.Value;
+                        break;
+                    }
+                }
+                if(adjacent == false)
+                {
+                    Console.WriteLine($"{n} is not an engine part");
+                }
+
             }
 
             // display the sum
