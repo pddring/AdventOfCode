@@ -12,6 +12,14 @@ namespace AdventOfCode
         int x, y;
         string item;
 
+        public string Symbol
+        {
+            get
+            {
+                return item;
+            }
+        }
+
         public int Value
         {
             get

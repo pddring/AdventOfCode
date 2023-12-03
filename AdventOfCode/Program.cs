@@ -10,7 +10,8 @@ namespace AdventOfCode
             List<Line> lines = Line.ReadLines("PuzzleInput.txt");
 
             int sum = 0;
-
+            /*
+             * Part 1
             foreach(EngineItem n in Line.numbers)
             {
                 bool adjacent = false;
@@ -29,6 +30,30 @@ namespace AdventOfCode
                     Console.WriteLine($"{n} is not an engine part");
                 }
 
+            }*/
+
+            foreach(EngineItem s in Line.symbols)
+            {
+                if(s.Symbol == "*")
+                {
+                    int adjacentNumberCount = 0;
+                    int gearRatio = 1;
+                    foreach(EngineItem n in Line.numbers)
+                    {
+                        if(n.AdjacentTo(s))
+                        {
+                            adjacentNumberCount++;
+                            if (adjacentNumberCount > 2)
+                                break;
+                            gearRatio *= n.Value;
+                        }
+                    }
+                    if(adjacentNumberCount == 2)
+                    {
+                        Console.WriteLine($"{s} is a gear with a ratio of {gearRatio}");
+                        sum += gearRatio;
+                    }
+                }
             }
 
             // display the sum
