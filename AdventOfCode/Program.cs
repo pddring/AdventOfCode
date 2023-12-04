@@ -12,7 +12,17 @@ namespace AdventOfCode
 
             foreach(Line line in lines)
             {
-                
+                int winners = 0;
+                foreach(int n in line.winningNumbers)
+                {
+                    if(line.yourNumbers.Contains(n))
+                    {
+                        winners++;
+                    }
+                }
+                int score = (int)Math.Pow(2, winners - 1);
+                Console.WriteLine($"Game {line.GameID} is worth {score} points ({winners} cards match)");
+                sum += score;
             }
 
             // display the sum
